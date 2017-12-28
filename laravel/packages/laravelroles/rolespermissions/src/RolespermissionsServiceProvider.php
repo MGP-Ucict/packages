@@ -26,5 +26,10 @@ class RolespermissionsServiceProvider extends ServiceProvider
     public function register()
     {
         //
+		include __DIR__."/routes.php";
+		$this->app->make('Laravelroles\Rolespermissions\Controllers\RoleController');
+		$this->app->make('Laravelroles\Rolespermissions\Controllers\RouteController');
+		$this->app->make('Laravelroles\Rolespermissions\Controllers\UserController');
+		
     }
 }
