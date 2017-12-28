@@ -14,6 +14,7 @@ class RolespermissionsServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+		$this->loadViewsFrom(__DIR__.'/views', 'rolespermissions');
 		$this->publishes([
 		__DIR__. '/migrations'=>$this->app->databasePath().'/migrations'], 'migrations');
     }
