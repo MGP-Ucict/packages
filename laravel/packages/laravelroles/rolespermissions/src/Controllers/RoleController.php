@@ -35,7 +35,7 @@ public function roleCreate(Request $request){
 	
 	}
 	
-	 return View::make('role_create')->with(array('permissions'=>$permissions));
+	 return View::make('laravelroles/rolespermissions/role_create')->with(array('permissions'=>$permissions));
 
 }
 
@@ -77,7 +77,7 @@ public function roleUpdate(Request $request, $roleId){
 	'cnt'=>$countPermissions,
 	
 	);
-	 return View::make('role_update')->with($data);
+	 return View::make('laravelroles/rolespermissions/role_update')->with($data);
 
 }
 public function roleDelete(Request $request, $roleId){
@@ -99,7 +99,7 @@ public function roleList(Request $request){
 	$roleObjs = Role::all();
 	
 	
-	 return View::make('role_list')->with(array('roleObjs'=>$roleObjs));
+	 return View::make('laravelroles/rolespermissions/role_list')->with(array('roleObjs'=>$roleObjs));
 
 }
 

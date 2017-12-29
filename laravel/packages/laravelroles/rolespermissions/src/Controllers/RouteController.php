@@ -44,7 +44,7 @@ public function routeCreate(Request $request){
 	
 	}
 	
-	 return View::make('route_create');
+	 return View::make('laravelroles/rolespermissions/route_create');
 
 }
 
@@ -65,7 +65,7 @@ public function routeUpdate(Request $request, $routeId){
 	
 	}
 	
-	 return View::make('route_update')->with(array('routeId'=>$routeId,
+	 return View::make('laravelroles/rolespermissions/route_update')->with(array('routeId'=>$routeId,
 	 'routeObj'=>$routeObj));
 
 }
@@ -88,7 +88,7 @@ public function routeList(Request $request){
 	$routeObjs = Permission::all();
 	
 	
-	 return View::make('route_list')->with(array('routeObjs'=>$routeObjs));
+	 return View::make('laravelroles/rolespermissions/route_list')->with(array('routeObjs'=>$routeObjs));
 
 }
 
