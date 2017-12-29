@@ -10,6 +10,7 @@ use View;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
 
 class RouteController extends Controller{
 
