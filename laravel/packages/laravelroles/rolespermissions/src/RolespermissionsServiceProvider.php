@@ -2,7 +2,9 @@
 
 namespace Laravelroles\Rolespermissions;
 
+use Laravelroles\Rolespermissions\Models\Permission;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class RolespermissionsServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,8 @@ class RolespermissionsServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+		//$this->registerPolicies();
+		$this->registerRolePolicies();
 		$this->publishes([__DIR__.'/views'=> base_path('resources/views/laravelroles/rolespermissions')]
 		);
 		$this->publishes([
@@ -34,4 +38,12 @@ class RolespermissionsServiceProvider extends ServiceProvider
 		$this->app->make('Laravelroles\Rolespermissions\Controllers\UserController');
 		
     }
+	public function registerRolePolicies()
+{
+    Gate::define('access-permission', function ($user, $p) {
+        return $user->hasAccess([$p]);
+   });
+    
+	
+	}
 }

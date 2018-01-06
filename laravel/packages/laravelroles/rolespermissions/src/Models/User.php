@@ -30,9 +30,19 @@ class User extends Authenticatable{
 	public $timestamps=true;
 	
 	public function roles(){
-	return $this->belongsToMany('App\Models\Role', 'roles_users', 'user_id', 'role_id');
+	return $this->belongsToMany('Laravelroles\Rolespermissions\Models\Role', 'roles_users', 'user_id', 'role_id');
 	}
 	
+	public function hasAccess(array $permissions)
+    {
+        // check if the permission is available in any role
+        foreach ($this->roles as $role) {
+            if($role->hasAccess($permissions)) {
+                return true;
+            }
+        }
+        return false;
+    }
     public function can1($route){
 		//$usr = $this;
 		$roles = $this->roles();
