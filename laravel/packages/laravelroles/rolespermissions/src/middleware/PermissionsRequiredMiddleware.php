@@ -18,11 +18,15 @@ class PermissionsRequiredMiddleware
         
 		// Get the current route.
 			$user = Auth::user();//$request->user();
-			
+			//$user = $request->user();
+			//var_dump($user);
+			//die();	
 			$route =  $request->path();
 			$route_array = array();
 			$route_array = explode( "/", $route);
 			$route = $route_array[0];
+			//dd($route);
+			//die($route);
 			$roles = $user->roles()->get();
 		foreach($roles as $role){
 			$perms = $role->routes()->get();
