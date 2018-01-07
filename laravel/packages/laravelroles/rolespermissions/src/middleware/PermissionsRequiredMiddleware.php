@@ -20,7 +20,9 @@ class PermissionsRequiredMiddleware
 			$user = Auth::user();//$request->user();
 			
 			$route =  $request->path();
-			
+			$route_array = array();
+			$route_array = explode( "/", $route);
+			$route = $route_array[0];
 			$roles = $user->roles()->get();
 		foreach($roles as $role){
 			$perms = $role->routes()->get();

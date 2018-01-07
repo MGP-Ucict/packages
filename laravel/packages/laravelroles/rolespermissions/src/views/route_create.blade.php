@@ -16,18 +16,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @if ($errors->any())
-						<div class="alert alert-danger">
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
+                    
                     
                     You are logged in!
-                    {{ Form::open(['action'=>'RouteController@routeCreate' , 'method' => 'get']) }}
+                    {{ Form::open(['action'=>'\Laravelroles\Rolespermissions\Controllers\RouteController@routeCreate' , 'method' => 'get']) }}
 					<label>Name:
 					</label>
 					{{ Form::text("name") }}
