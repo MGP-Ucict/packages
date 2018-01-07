@@ -33,15 +33,59 @@ class RolespermissionsServiceProvider extends ServiceProvider
     {
         //
 		include __DIR__."/routes.php";
+		
 		$this->app->make('Laravelroles\Rolespermissions\Controllers\RoleController');
 		$this->app->make('Laravelroles\Rolespermissions\Controllers\RouteController');
 		$this->app->make('Laravelroles\Rolespermissions\Controllers\UserController');
 		
     }
+	 public function map()
+    {
+        //$this->mapWebRoutes();
+
+        //$this->mapApiRoutes();
+
+        //
+    }
+
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapWebRoutes()
+    {
+        Route::group([
+            'middleware' => 'web',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/web.php');
+        });
+    }
+
+    /**
+     * Define the "api" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapApiRoutes()
+    {
+        Route::group([
+            'middleware' => 'api',
+            'namespace' => $this->namespace,
+            'prefix' => 'api',
+        ], function ($router) {
+            require base_path('routes/api.php');
+        });
+    }
 	public function registerRolePolicies()
 {
-    Gate::define('access-permission', function ($user, $p) {
-        return $user->hasAccess([$p]);
+    Gate::define('access-permission', function () {
+        return true;//$user->hasAccess([$p]);
    });
     
 	

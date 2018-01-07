@@ -1,14 +1,16 @@
-Route::get('/home', 'HomeController@index')->name('home');
-//Route::post('/route_create', function() {
-  //  return view('route_create');
-//})->name('route_create');
 <?php
-/*Route::post('/route_create', [
+Route::any('/route_create', [
 	'as'        => 'route_create',
-	'uses'      => 'RouteController@routeCreate',
- ]);*/
-Route::any('/route_create', 'Laravelroles\Rolespermissions\Controllers\RouteController@routeCreate')->name('route_create')->middleware('can:access-permission,"route_create"');
-Route::post('/route_update/{routeId}', 'Laravelroles\Rolespermissions\Controllers\RouteController@routeUpdate')->name('route_update');
+	'middlewareGroups' => ['web', 'permissions.required'],
+	'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@routeCreate',
+ ]);
+ Route::any('/route_update/{routeId}', [
+	'as'        => 'route_update',
+	'middleware' => ['web','permissions.required'],
+	'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@routeUpdate',
+ ]);
+//Route::any('/route_create', 'Laravelroles\Rolespermissions\Controllers\RouteController@routeCreate')->name('route_create');//->middleware('can:access-permission');
+//Route::post('/route_update/{routeId}', 'Laravelroles\Rolespermissions\Controllers\RouteController@routeUpdate')->name('route_update');
 Route::get('/route_delete/{routeId}', 'Laravelroles\Rolespermissions\Controllers\RouteController@routeDelete')->name('route_delete');
  Route::get('/route_list', 'Laravelroles\Rolespermissions\Controllers\RouteController@routeList')->name('route_list');
  Route::get('/role_list', 'Laravelroles\Rolespermissions\Controllers\RoleController@roleList')->name('role_list');

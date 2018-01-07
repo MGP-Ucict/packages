@@ -43,19 +43,5 @@ class User extends Authenticatable{
         }
         return false;
     }
-    public function can1($route){
-		//$usr = $this;
-		$roles = $this->roles();
-		foreach($roles as $role){
-			$perms = $role->routes();
-			foreach($perms as $p){
-				if($route == $p->name)
-					return true;
-					
-				
-			
-			}
-		}
-		return false;	
-	}
+    
 }
