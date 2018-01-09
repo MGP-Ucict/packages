@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="container">
-@include('header')
+@include('laravelroles.rolespermissions.header')
 
     <div class="row">
 
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Users</div>
+                <div class="panel-heading">{{translation.Users}}</div>
 
                 <div class="panel-body">
                     @if (session('status'))

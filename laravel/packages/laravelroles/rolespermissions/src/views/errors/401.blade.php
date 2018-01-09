@@ -1,1 +1,1 @@
-<h2>No access denied</h2>
+<h2> Access denied</h2>

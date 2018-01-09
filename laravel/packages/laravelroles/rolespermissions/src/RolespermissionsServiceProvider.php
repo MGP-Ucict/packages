@@ -18,6 +18,8 @@ class RolespermissionsServiceProvider extends ServiceProvider
         //
 		//$this->registerPolicies();
 		$this->registerRolePolicies();
+		$this->loadTranslationsFrom(__DIR__.'/lang', 'blah'
+		);
 		$this->publishes([__DIR__.'/views'=> base_path('resources/views/laravelroles/rolespermissions')]
 		);
 		$this->publishes([__DIR__.'/views/errors'=> base_path('resources/views/errors')]
