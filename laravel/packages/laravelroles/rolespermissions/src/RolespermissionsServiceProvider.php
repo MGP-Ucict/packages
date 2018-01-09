@@ -22,6 +22,8 @@ class RolespermissionsServiceProvider extends ServiceProvider
 		);
 		$this->publishes([__DIR__.'/views'=> base_path('resources/views/laravelroles/rolespermissions')]
 		);
+		$this->publishes([__DIR__.'/lang'=> base_path('resources/lang')]
+		);
 		$this->publishes([__DIR__.'/views/errors'=> base_path('resources/views/errors')]
 		);
 		$this->publishes([

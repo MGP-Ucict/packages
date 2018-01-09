@@ -29,4 +29,14 @@ class UserRequest extends FormRequest
 	    
         ];
     }
+
+
+	public function messages()
+	{
+	    return [
+		'email.required' => trans('blah::translation.email.required'),
+		'email.unique'  => trans('blah::translation.email.required'),
+		'email.max'     => trans('blah::translation.email.required')
+	    ];
+	}
 }
