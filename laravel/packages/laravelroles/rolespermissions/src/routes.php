@@ -1,5 +1,10 @@
 <?php
-Route::any('/route_create', [
+Route::post('/route_create', [
+	'as'        => 'route_create',
+	'middleware' => ['web', 'permissions.required'],
+	'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@routeCreate',
+ ]);
+Route::get('/route_create', [
 	'as'        => 'route_create',
 	'middleware' => ['web', 'permissions.required'],
 	'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@routeCreate',
@@ -40,10 +45,15 @@ Route::any('/route_list', [
 	'middleware' => ['web','permissions.required'],
 	'uses'      => 'Laravelroles\Rolespermissions\Controllers\RoleController@roleDelete',
  ]);
- Route::any('/user_create', [
+Route::get('/user_create', [
 	'as'        => 'user_create',
 	'middleware' => ['web', 'permissions.required'],
-	'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@userCreate',
+	'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@create',
+ ]);
+Route::post('/user_create', [
+	'as'        => 'user_create',
+	'middleware' => ['web', 'permissions.required'],
+	'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@store',
  ]);
  Route::any('/user_update/{userId}', [
 	'as'        => 'user_update',

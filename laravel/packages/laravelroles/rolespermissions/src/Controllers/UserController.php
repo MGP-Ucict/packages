@@ -8,14 +8,23 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use DB;
 use View;
+use Laravelroles\Rolespermissions\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller{
-
-public function UserCreate(Request $request){
+public function create(Request $request)
+    {	
 	$role = Role::all();
-	if($request->isMethod('get') && $request->input('submit')){
+	
+	//return view('user_create');
+        return View::make('laravelroles/rolespermissions/user_create')->with(array('roles'=>$role));	
+	
+    }
+
+public function store(UserRequest $request){
+	$role = Role::all();
+	if($request->isMethod('post') && $request->input('submit')){
 	
 		$input = Input::get();
 		$userObj = new User;
@@ -32,16 +41,16 @@ public function UserCreate(Request $request){
 		
 		}
 		
-		
+		//return redirect()->route('user_create');
 	
 	}
-	
+	//return redirect()->route('user_create');
 	 return View::make('laravelroles/rolespermissions/user_create')->with(array('roles'=>$role));
 
 }
 
 
-public function userUpdate(Request $request, $userId){
+public function userUpdate(UserRequest $request, $userId){
 	$userObj = User::find($userId);
 	$roles0 = User::find($userId)->roles()->get();
 	
