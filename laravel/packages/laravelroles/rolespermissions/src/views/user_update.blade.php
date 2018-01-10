@@ -8,7 +8,7 @@
 
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Routes</div>
+                <div class="panel-heading">{{trans('blah::translation.EditUser')}}</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -29,13 +29,13 @@
                     
                     You are logged in!
                     {{ Form::open(['url' => 'user_update/'.$userId, 'method' => 'get']) }}
-					<label>Name:</label>
+					<label>{{trans('blah::translation.Name')}}:</label>
 					{{ Form::text("name", $userObj->name) }}
 					<br/>
-					<label>Email:</label>
+					<label>{{trans('blah::translation.Email')}}:</label>
 					{{ Form::text("email", $userObj->email) }}
 					<br/>
-					<label>Password:</label>
+					<label>{{trans('blah::translation.Password')}}:</label>
 					{{ Form::password("password") }}
 					<br/>
 					<label>Is active:</label>
