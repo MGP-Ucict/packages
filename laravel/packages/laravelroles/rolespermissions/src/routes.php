@@ -55,10 +55,15 @@ Route::post('/user_create', [
 	'middleware' => ['web', 'permissions.required'],
 	'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@store',
  ]);
- Route::any('/user_update/{userId}', [
+ Route::post('/user_update/{userId}', [
 	'as'        => 'user_update',
 	'middleware' => ['web','permissions.required'],
-	'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@userUpdate',
+	'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@update',
+ ]);
+Route::get('/user_update/{userId}', [
+	'as'        => 'user_update',
+	'middleware' => ['web','permissions.required'],
+	'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@edit',
  ]);
  Route::any('/user_delete/{userId}', [
 	'as'        => 'user_delete',

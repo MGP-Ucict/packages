@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use DB;
 use View;
 use Laravelroles\Rolespermissions\Requests\UserRequest;
+use Laravelroles\Rolespermissions\Requests\UserUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
@@ -48,14 +49,34 @@ public function store(UserRequest $request){
 	 return View::make('laravelroles/rolespermissions/user_create')->with(array('roles'=>$role));
 
 }
-
-
-public function userUpdate(UserRequest $request, $userId){
+public function edit(Request $request, $userId)
+    {	
+	
 	$userObj = User::find($userId);
 	$roles0 = User::find($userId)->roles()->get();
 	
 	$roles = Role::all();
-	if($request->isMethod('get') && $request->input('submit')){
+	
+	
+	
+	$data = array(
+	'userId'=>$userId,
+	 'userObj'=>$userObj,
+	 'roles'=>$roles,
+	 'roles0'=>$roles0,
+	
+	
+	);
+	 return View::make('laravelroles/rolespermissions/user_update')->with($data);
+	
+    }
+
+public function update(UserUpdateRequest $request, $userId){
+	$userObj = User::find($userId);
+	$roles0 = User::find($userId)->roles()->get();
+	
+	$roles = Role::all();
+	if($request->isMethod('post') && $request->input('submit')){
 	
 		$input = Input::get();
 		
